@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_system/pages/mainpage/HomeScreen.dart';
-import 'package:pharmacy_system/pages/subScreen-testonly/SubScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:team_project/admin/admin_ui.dart';
+import 'package:team_project/admin/controller/admin_provider.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [], child: const MyApp()));
+  runApp(ChangeNotifierProvider(create: (_)=>TabProvider(),
+  child: const MyApp() ,)
+    );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const Homescreen(),
-        '/SubScreen': (context) => const SubScreen(),
-      },
+      debugShowCheckedModeBanner: false,
+      
+      home: AdminUi(),
     );
   }
 }
